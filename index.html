@@ -1,112 +1,380 @@
-<!-- 3D Object -->  
-<div class="scene">  
-  <div class="card-3d" id="card3d">  
-    <div class="glow"></div>  
-  
-    <div class="card-content">  
-      <span>☁️</span>  
-      <h2>Cloud & DevOps</h2>  
-      <p>Linux • AWS • Git • DevOps</p>  
-    </div>  
-  </div>  
-</div>  
-  
-<style>  
-.scene {  
-  width: 350px;  
-  height: 350px;  
-  perspective: 1000px;  
-  display: flex;  
-  align-items: center;  
-  justify-content: center;  
-}  
-  
-.card-3d {  
-  width: 260px;  
-  height: 330px;  
-  position: relative;  
-  border-radius: 25px;  
-  transform-style: preserve-3d;  
-  transition: transform 0.12s ease-out;  
-  background: linear-gradient(145deg, #1d0733, #090014);  
-  border: 1px solid #a94cff;  
-  box-shadow:  
-    0 0 25px rgba(169, 76, 255, 0.5),  
-    inset 0 0 30px rgba(169, 76, 255, 0.1);  
-  overflow: hidden;  
-}  
-  
-.glow {  
-  position: absolute;  
-  width: 120px;  
-  height: 120px;  
-  border-radius: 50%;  
-  background: #b94cff;  
-  filter: blur(60px);  
-  opacity: 0.5;  
-  transform: translateZ(20px);  
-}  
-  
-.card-content {  
-  position: absolute;  
-  inset: 0;  
-  display: flex;  
-  flex-direction: column;  
-  align-items: center;  
-  justify-content: center;  
-  text-align: center;  
-  transform: translateZ(60px);  
-}  
-  
-.card-content span {  
-  font-size: 70px;  
-  margin-bottom: 20px;  
-}  
-  
-.card-content h2 {  
-  color: #fff;  
-  margin-bottom: 12px;  
-}  
-  
-.card-content p {  
-  color: #c9a9d8;  
-}  
-  
-/* Mobile */  
-@media (max-width: 800px) {  
-  .scene {  
-    width: 300px;  
-    height: 300px;  
-    margin-top: 40px;  
-  }  
-  
-  .card-3d {  
-    width: 220px;  
-    height: 280px;  
-  }  
-}  
-</style>  
-  
-<script>  
-const card = document.getElementById("card3d");  
-  
-document.addEventListener("mousemove", (e) => {  
-  
-  const x = e.clientX;  
-  const y = e.clientY;  
-  
-  const centerX = window.innerWidth / 2;  
-  const centerY = window.innerHeight / 2;  
-  
-  const rotateY = (x - centerX) / 25;  
-  const rotateX = (centerY - y) / 25;  
-  
-  card.style.transform =  
-    `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;  
-});  
-  
-/* Reset when mouse leaves */  
-document.addEventListener("mouseleave", () => {  
-  card.style.transform = "rotateX(0deg) rotateY(0deg)";  
-});  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ezhil | 3D Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:Poppins,sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden; 
+}
+
+.bg{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(168,85,247,.25),transparent 35%),
+radial-gradient(circle at 80% 30%,rgba(59,130,246,.2),transparent 35%),
+radial-gradient(circle at 50% 80%,rgba(236,72,153,.18),transparent 40%),
+#050816;
+z-index:-3;
+}
+
+.grid{
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+background-size:60px 60px;
+opacity:.3;
+z-index:-2;
+}
+
+.glow{
+position:fixed;
+width:420px;
+height:420px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(139,92,246,.35),transparent 70%);
+filter:blur(25px);
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:-1;
+transition:transform .08s linear;
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(14px);
+background:rgba(5,8,22,.4);
+z-index:1000;
+}
+
+.logo{
+font-size:26px;
+font-weight:700;
+letter-spacing:2px;
+}
+
+nav div a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-size:15px;
+transition:.3s;
+}
+
+nav div a:hover{color:#8b5cf6}
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:120px 8%;
+perspective:1200px;
+}
+
+.left{
+max-width:560px;
+transform-style:preserve-3d;
+transition:transform .12s linear;
+}
+
+.left h1{
+font-size:clamp(50px,7vw,90px);
+line-height:1;
+margin:12px 0;
+}
+
+.left h1 span{color:#8b5cf6}
+
+.left p{
+color:#b7b7c9;
+line-height:1.8;
+margin:20px 0;
+}
+
+.btn{
+display:inline-block;
+padding:14px 30px;
+border-radius:40px;
+background:#8b5cf6;
+color:white;
+text-decoration:none;
+font-weight:600;
+box-shadow:0 0 30px rgba(139,92,246,.45);
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+box-shadow:0 0 45px rgba(139,92,246,.8);
+}
+
+.orb-wrap{
+width:380px;
+height:380px;
+display:flex;
+justify-content:center;
+align-items:center;
+perspective:1200px;
+}
+
+.orb{
+width:260px;
+height:260px;
+border-radius:50%;
+background:
+radial-gradient(circle at 30% 30%,#ffffff,#8b5cf6 40%,#312e81 100%);
+box-shadow:
+0 0 90px rgba(139,92,246,.6),
+inset -30px -30px 60px rgba(0,0,0,.35);
+transform-style:preserve-3d;
+transition:transform .12s linear;
+position:relative;
+}
+
+.orb::before{
+content:"";
+position:absolute;
+inset:18px;
+border:1px solid rgba(255,255,255,.2);
+border-radius:50%;
+}
+
+section{
+padding:110px 8%;
+perspective:1200px;
+}
+
+h2{
+font-size:42px;
+margin-bottom:35px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(16px);
+padding:30px;
+border-radius:22px;
+transform-style:preserve-3d;
+transition:transform .15s linear,border .3s;
+}
+
+.card:hover{
+border-color:#8b5cf6;
+}
+
+.card h3{
+color:#8b5cf6;
+margin-bottom:12px;
+}
+
+.card p{
+color:#b7b7c9;
+line-height:1.7;
+}
+
+footer{
+padding:35px;
+text-align:center;
+color:#8f8fa7;
+}
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+gap:60px;
+}
+
+nav div{
+display:none;
+}
+
+.orb-wrap{
+width:280px;
+height:280px;
+}
+
+.orb{
+width:190px;
+height:190px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+<div class="glow" id="glow"></div>
+
+<nav>
+<div class="logo">EZHIL.</div>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+
+<div class="left" id="heroText">
+<small style="color:#8b5cf6;">Hello, I'm</small>
+
+<h1>Ezhil <span>.</span></h1>
+
+<p>
+B.Tech IT Student passionate about Cloud Computing,
+Linux, AWS and modern Web Development.
+</p>
+
+<a class="btn" href="#projects">View My Work</a>
+</div>
+
+<div class="orb-wrap">
+<div class="orb" id="orb"></div>
+</div>
+
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+
+<div class="cards">
+<div class="card">
+<h3>Who I Am</h3>
+<p>I'm an IT student interested in Cloud Computing, DevOps and modern web experiences.</p>
+</div>
+
+<div class="card">
+<h3>Goal</h3>
+<p>Looking for opportunities to build impactful cloud and software projects.</p>
+</div>
+</div>
+
+</section>
+
+<section id="skills">
+
+<h2>Skills</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Programming</h3>
+<p>Java • Python • HTML • CSS • JavaScript</p>
+</div>
+
+<div class="card">
+<h3>Cloud</h3>
+<p>AWS • Linux • Git • GitHub</p>
+</div>
+
+<div class="card">
+<h3>Soft Skills</h3>
+<p>Communication • Adaptability • Teamwork • Time Management</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<h2>Projects</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>3D Portfolio</h3>
+<p>Interactive mouse-based 3D portfolio with glassmorphism UI.</p>
+</div>
+
+<div class="card">
+<h3>Upcoming Project</h3>
+<p>Your next cloud project will appear here.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Let's Connect</h3>
+<p>Email : yourmail@gmail.com</p>
+<p>GitHub : github.com/yourusername</p>
+<p>LinkedIn : linkedin.com/in/yourusername</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>© 2026 Ezhil. All Rights Reserved.</footer>
+
+<script>
+const orb=document.getElementById("orb");
+const hero=document.getElementById("heroText");
+const glow=document.getElementById("glow");
+const cards=document.querySelectorAll(".card");
+
+document.addEventListener("mousemove",e=>{
+
+const x=(e.clientX/window.innerWidth-.5)*30;
+const y=(e.clientY/window.innerHeight-.5)*30;
+
+orb.style.transform=`rotateY(${x}deg) rotateX(${-y}deg) translateZ(40px)`;
+hero.style.transform=`rotateY(${x/3}deg) rotateX(${-y/3}deg) translateZ(35px)`;
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
+
+cards.forEach(card=>{
+const rect=card.getBoundingClientRect();
+const cx=rect.left+rect.width/2;
+const cy=rect.top+rect.height/2;
+const dx=(e.clientX-cx)/20;
+const dy=(e.clientY-cy)/20;
+card.style.transform=`rotateY(${dx}deg) rotateX(${-dy}deg) translateZ(20px)`;
+});
+
+});
 </script>
+
+</body>
+</html>
