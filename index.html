@@ -3,460 +3,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezhilarasi M — Linux &amp; Cloud Engineer</title>
+<title>Ezhil | 3D Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --bg: #0b0d0c;
-    --card: #15181a;
-    --line: #262b28;
-    --text: #eef1ee;
-    --muted: #9aa39c;
-    --accent: #8ce071;
-    --mono: 'JetBrains Mono', 'Courier New', monospace;
-    --sans: 'Sora', 'Segoe UI', sans-serif;
-  }
-  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-  *{ margin:0; padding:0; box-sizing:border-box; }
-  html{ scroll-behavior: smooth; }
-  body{ background: var(--bg); color: var(--text); font-family: var(--sans); overflow-x:hidden; }
-  a{ color:inherit; text-decoration:none; }
-  .wrap{ max-width: 1120px; margin:0 auto; padding: 0 32px; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:Poppins,sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
 
-  /* NAV */
-  header{
-    position: fixed; top:0; left:0; right:0; z-index: 200;
-    background: rgba(11,13,12,0.7); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
-  }
-  nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1120px; margin:0 auto; }
-  .logo{ font-family: var(--mono); font-weight:600; font-size:17px; }
-  .logo span{ color: var(--accent); }
-  .nav-links{ display:flex; gap:28px; list-style:none; }
-  .nav-links a{ font-size:14px; color: var(--muted); transition: color .2s; }
-  .nav-links a:hover{ color: var(--text); }
-  .nav-cta{ font-family: var(--mono); font-size:13px; padding:9px 18px; border:1px solid var(--accent); border-radius:3px; color:var(--accent); }
-  .nav-cta:hover{ background: var(--accent); color:#06140a; }
+.bg{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(168,85,247,.25),transparent 35%),
+radial-gradient(circle at 80% 30%,rgba(59,130,246,.2),transparent 35%),
+radial-gradient(circle at 50% 80%,rgba(236,72,153,.18),transparent 40%),
+#050816;
+z-index:-3;
+}
 
-  /* ===== SCROLL-SCRUBBED HERO ===== */
-  #scrollytelling{
-    position: relative;
-    height: 400vh; /* scroll distance that drives the animation — 4 frames */
-  }
-  .pin{
-    position: sticky; top:0; height:100vh; width:100%;
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-  }
-  .frame{
-    position:absolute; inset:0;
-    display:grid; grid-template-columns: 1fr 1fr; align-items:center;
-    max-width:1120px; margin:0 auto; padding: 0 32px;
-    opacity:0; pointer-events:none;
-    transition: opacity .35s ease;
-  }
-  .frame.active{ opacity:1; pointer-events:auto; }
-  .frame .copy{ order:1; }
-  .frame .art{ order:2; display:flex; justify-content:center; }
-  .frame .tag{
-    font-family: var(--mono); font-size:12px; color:var(--accent);
-    letter-spacing:.5px; margin-bottom:18px; display:block;
-  }
-  .frame h1{
-    font-size: clamp(34px, 5vw, 58px); font-weight:800; line-height:1.05; letter-spacing:-1.5px;
-  }
-  .frame p{ margin-top:18px; color:var(--muted); max-width: 46ch; font-size:15.5px; }
-  .frame .actions{ display:flex; gap:14px; margin-top:32px; }
-  .btn{ font-family: var(--mono); font-size:14px; padding:13px 24px; border-radius:4px; }
-  .btn-primary{ background: var(--accent); color:#06140a; }
-  .btn-ghost{ border:1px solid var(--line); color:var(--text); }
+.grid{
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+background-size:60px 60px;
+opacity:.3;
+z-index:-2;
+}
 
-  .portrait{
-    width: 320px; height: 320px; border-radius: 14px;
-    background: linear-gradient(160deg,#1d221e,#0d0f0d);
-    border: 1px solid var(--line);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    font-family: var(--mono); font-size: 15px; color: var(--muted);
-    text-align:center; padding: 20px;
-    position: relative; overflow:hidden;
-  }
-  /* Replace this block with <img src="your-photo.jpg"> for each frame */
-  .portrait::after{
-    content:''; position:absolute; inset:0;
-    background: radial-gradient(circle at 50% 30%, rgba(140,224,113,.12), transparent 60%);
-  }
-  .portrait svg{ position:relative; z-index:1; width:100px; height:100px; opacity:.55; }
-  .portrait .cap{ position:relative; z-index:1; margin-top:14px; font-family:var(--mono); font-size:13px; color:var(--muted); }
+.glow{
+position:fixed;
+width:420px;
+height:420px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(139,92,246,.35),transparent 70%);
+filter:blur(25px);
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:-1;
+transition:transform .08s linear;
+}
 
-  .progress-rail{
-    position:absolute; left:32px; top:50%; transform:translateY(-50%);
-    display:flex; flex-direction:column; gap:10px; z-index:5;
-  }
-  .progress-rail .dot{
-    width:7px; height:7px; border-radius:50%; background: var(--line);
-    transition: background .3s, transform .3s;
-  }
-  .progress-rail .dot.active{ background: var(--accent); transform: scale(1.3); }
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(14px);
+background:rgba(5,8,22,.4);
+z-index:1000;
+}
 
-  .scroll-hint{
-    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
-    font-family: var(--mono); font-size:11px; color:var(--muted); letter-spacing:1px;
-    z-index: 5;
-  }
+.logo{
+font-size:26px;
+font-weight:700;
+letter-spacing:2px;
+}
 
-  /* ===== REGULAR SECTIONS ===== */
-  section.block{ padding:120px 0; border-top:1px solid var(--line); position:relative; z-index:2; background:var(--bg); }
-  .eyebrow{ font-family: var(--mono); font-size:12px; color:var(--accent); margin-bottom:14px; display:block; }
-  .section-head{ margin-bottom:56px; max-width:640px; }
-  .section-head h2{ font-size: clamp(28px,4vw,38px); font-weight:700; letter-spacing:-1px; }
-  .section-head p{ color:var(--muted); margin-top:12px; font-size:15px; }
+nav div a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-size:15px;
+transition:.3s;
+}
 
-  .about-grid{ display:grid; grid-template-columns: 280px 1fr; gap:56px; align-items:start; }
-  .about-card{ background:var(--card); border:1px solid var(--line); border-radius:10px; padding:22px; text-align:center; }
-  .about-card .avatar{
-    width:100%; aspect-ratio:1; border-radius:8px; background:linear-gradient(160deg,#1c211d,#0e100e);
-    display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:38px; color:var(--accent);
-    border:1px solid var(--line); margin-bottom:16px; font-weight:700;
-  }
-  .about-card .status{ font-family:var(--mono); font-size:12px; color:var(--accent); display:flex; align-items:center; justify-content:center; gap:6px; }
-  .about-card .status .d{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
-  .about-text p{ color:var(--muted); font-size:15.5px; margin-bottom:16px; max-width:60ch; }
-  .stat-row{ display:flex; gap:14px; margin-top:24px; flex-wrap:wrap; }
-  .stat{ border:1px solid var(--line); border-radius:8px; padding:14px 18px; flex:1; min-width:140px; background:var(--card); }
-  .stat b{ display:block; font-size:20px; }
-  .stat span{ font-family:var(--mono); font-size:11px; color:var(--muted); }
+nav div a:hover{color:#8b5cf6}
 
-  .skills-grid, .project-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
-  .skill-card, .project-card{
-    background:var(--card); border:1px solid var(--line); border-radius:10px; padding:24px;
-    transition: border-color .2s, transform .2s;
-  }
-  .skill-card:hover, .project-card:hover{ border-color:#4f7a45; transform: translateY(-3px); }
-  .skill-card h3{ font-size:16px; margin-bottom:10px; }
-  .level{ font-family:var(--mono); font-size:11px; color:var(--accent); }
-  .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
-  .tag{ font-family:var(--mono); font-size:11px; color:var(--muted); border:1px solid var(--line); padding:4px 9px; border-radius:4px; }
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:120px 8%;
+perspective:1200px;
+}
 
-  .project-card{ display:flex; flex-direction:column; min-height:260px; }
-  .project-card .p-tag{ font-family:var(--mono); font-size:11px; color:var(--accent); margin-bottom:12px; }
-  .project-card h3{ font-size:18px; margin-bottom:8px; }
-  .project-card p{ color:var(--muted); font-size:14px; flex-grow:1; }
-  .project-card .link{ font-family:var(--mono); font-size:13px; margin-top:14px; }
-  .project-card .link:hover{ color: var(--accent); }
+.left{
+max-width:560px;
+transform-style:preserve-3d;
+transition:transform .12s linear;
+}
 
-  .cert-list{ display:flex; flex-direction:column; gap:1px; background:var(--line); border-radius:10px; overflow:hidden; border:1px solid var(--line); }
-  .cert-row{ background:var(--card); padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
-  .cert-row .cname{ font-weight:600; font-size:15px; }
-  .cert-row .cissuer{ color:var(--muted); font-size:13px; margin-top:3px; }
-  .cert-row .cyear{ font-family:var(--mono); font-size:12px; color:var(--accent); white-space:nowrap; }
+.left h1{
+font-size:clamp(50px,7vw,90px);
+line-height:1;
+margin:12px 0;
+}
 
-  .contact-inner{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
-  .contact-links{ display:flex; flex-direction:column; gap:12px; margin-top:26px; }
-  .contact-links a{ font-family:var(--mono); font-size:14px; padding:12px 0; border-bottom:1px solid var(--line); display:block; }
-  .contact-links a:hover{ color:var(--accent); }
-  form{ display:flex; flex-direction:column; gap:14px; }
-  input, textarea{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:13px 16px; color:var(--text); font-family:var(--sans); font-size:14px; }
-  input:focus, textarea:focus{ outline:none; border-color:var(--accent); }
-  textarea{ resize:vertical; min-height:110px; }
+.left h1 span{color:#8b5cf6}
 
-  footer{ padding:30px 32px; text-align:center; color:var(--muted); font-size:13px; font-family:var(--mono); border-top:1px solid var(--line); }
+.left p{
+color:#b7b7c9;
+line-height:1.8;
+margin:20px 0;
+}
 
-  @media (max-width: 860px){
-    .nav-links{ display:none; }
-    .frame{ grid-template-columns: 1fr; text-align:center; }
-    .frame .art{ margin-bottom: 20px; }
-    .about-grid, .contact-inner{ grid-template-columns:1fr; }
-    .skills-grid, .project-grid{ grid-template-columns:1fr; }
-    .progress-rail{ display:none; }
-  }
+.btn{
+display:inline-block;
+padding:14px 30px;
+border-radius:40px;
+background:#8b5cf6;
+color:white;
+text-decoration:none;
+font-weight:600;
+box-shadow:0 0 30px rgba(139,92,246,.45);
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+box-shadow:0 0 45px rgba(139,92,246,.8);
+}
+
+.orb-wrap{
+width:380px;
+height:380px;
+display:flex;
+justify-content:center;
+align-items:center;
+perspective:1200px;
+}
+
+.orb{
+width:260px;
+height:260px;
+border-radius:50%;
+background:
+radial-gradient(circle at 30% 30%,#ffffff,#8b5cf6 40%,#312e81 100%);
+box-shadow:
+0 0 90px rgba(139,92,246,.6),
+inset -30px -30px 60px rgba(0,0,0,.35);
+transform-style:preserve-3d;
+transition:transform .12s linear;
+position:relative;
+}
+
+.orb::before{
+content:"";
+position:absolute;
+inset:18px;
+border:1px solid rgba(255,255,255,.2);
+border-radius:50%;
+}
+
+section{
+padding:110px 8%;
+perspective:1200px;
+}
+
+h2{
+font-size:42px;
+margin-bottom:35px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(16px);
+padding:30px;
+border-radius:22px;
+transform-style:preserve-3d;
+transition:transform .15s linear,border .3s;
+}
+
+.card:hover{
+border-color:#8b5cf6;
+}
+
+.card h3{
+color:#8b5cf6;
+margin-bottom:12px;
+}
+
+.card p{
+color:#b7b7c9;
+line-height:1.7;
+}
+
+footer{
+padding:35px;
+text-align:center;
+color:#8f8fa7;
+}
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+gap:60px;
+}
+
+nav div{
+display:none;
+}
+
+.orb-wrap{
+width:280px;
+height:280px;
+}
+
+.orb{
+width:190px;
+height:190px;
+}
+
+}
 </style>
 </head>
+
 <body>
 
-<header>
-  <nav>
-    <div class="logo">Ezhil<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Hire me</a>
-  </nav>
-</header>
+<div class="bg"></div>
+<div class="grid"></div>
+<div class="glow" id="glow"></div>
 
-<!-- ===== SCROLL-SCRUBBED HERO (like the reel) ===== -->
-<div id="scrollytelling">
-  <div class="pin">
+<nav>
+<div class="logo">EZHIL.</div>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
 
-    <div class="progress-rail">
-      <div class="dot active" data-i="0"></div>
-      <div class="dot" data-i="1"></div>
-      <div class="dot" data-i="2"></div>
-      <div class="dot" data-i="3"></div>
-    </div>
+<section class="hero">
 
-    <div class="frame active" data-i="0">
-      <div class="copy">
-        <span class="tag">// SYSTEM PROFILE</span>
-        <h1>Hi, I'm Ezhilarasi<br>LINUX ADMINISTRATOR</h1>
-        <p>Final-year IT student turning servers, scripts and cloud consoles into dependable systems.</p>
-        <div class="actions">
-          <a href="#projects" class="btn btn-primary">View my work</a>
-          <a href="#contact" class="btn btn-ghost">Contact me</a>
-        </div>
-      </div>
-      <div class="art"><div class="portrait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:#8ce071">
-  <circle cx="12" cy="8" r="4"/>
-  <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
-</svg><div class="cap">Sample photo — frame 1</div></div></div>
-    </div>
+<div class="left" id="heroText">
+<small style="color:#8b5cf6;">Hello, I'm</small>
 
-    <div class="frame" data-i="1">
-      <div class="copy">
-        <span class="tag">// CORE SKILL</span>
-        <h1>RHCSA CERTIFIED<br>&amp; HANDS-ON</h1>
-        <p>SSH, SELinux, LVM, CRONTAB, RPM/YUM and Bash — day-to-day tools, not just theory.</p>
-        <div class="actions">
-          <a href="#skills" class="btn btn-primary">See skills</a>
-          <a href="#contact" class="btn btn-ghost">Contact me</a>
-        </div>
-      </div>
-      <div class="art"><div class="portrait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:#8ce071">
-  <circle cx="12" cy="8" r="4"/>
-  <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
-</svg><div class="cap">Sample photo — frame 2</div></div></div>
-    </div>
+<h1>Ezhil <span>.</span></h1>
 
-    <div class="frame" data-i="2">
-      <div class="copy">
-        <span class="tag">// CLOUD</span>
-        <h1>SCALABLE<br>CLOUD SYSTEMS</h1>
-        <p>Console-level AWS experience across EC2, S3, IAM and RDS/Aurora.</p>
-        <div class="actions">
-          <a href="#projects" class="btn btn-primary">View my work</a>
-          <a href="#contact" class="btn btn-ghost">Contact me</a>
-        </div>
-      </div>
-      <div class="art"><div class="portrait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:#8ce071">
-  <circle cx="12" cy="8" r="4"/>
-  <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
-</svg><div class="cap">Sample photo — frame 3</div></div></div>
-    </div>
+<p>
+B.Tech IT Student passionate about Cloud Computing,
+Linux, AWS and modern Web Development.
+</p>
 
-    <div class="frame" data-i="3">
-      <div class="copy">
-        <span class="tag">// OPEN TO WORK</span>
-        <h1>LET'S BUILD<br>SOMETHING RELIABLE</h1>
-        <p>Open to Linux administration, cloud, and DevOps roles. Let's talk.</p>
-        <div class="actions">
-          <a href="#contact" class="btn btn-primary">Contact me</a>
-          <a href="#about" class="btn btn-ghost">About me</a>
-        </div>
-      </div>
-      <div class="art"><div class="portrait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:#8ce071">
-  <circle cx="12" cy="8" r="4"/>
-  <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
-</svg><div class="cap">Sample photo — frame 4</div></div></div>
-    </div>
-
-    <div class="scroll-hint">↓ SCROLL TO SCRUB TIMELINE</div>
-  </div>
+<a class="btn" href="#projects">View My Work</a>
 </div>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="block">
-  <div class="wrap about-grid">
-    <div class="about-card">
-      <div class="avatar">EM</div>
-      <div class="status"><span class="d"></span>Available for hire</div>
-    </div>
-    <div class="about-text">
-      <span class="eyebrow">// About</span>
-      <h2 style="font-size:28px; font-weight:700; margin-bottom:16px;">Hello, I'm Ezhilarasi M</h2>
-      <p>Final-year B.Tech IT student with a Linux Administrator internship at Vsphere Technologies and an RHCSA certification. I work comfortably across SSH, SELinux, LVM, RPM/YUM and Bash, with AWS console-level experience in EC2, S3, IAM and RDS.</p>
-      <p>Alongside infrastructure work, I build practical tools — including an AI-powered ATS resume analyzer using Flask and scikit-learn — to keep my software fundamentals sharp.</p>
-      <div class="stat-row">
-        <div class="stat"><b>7.8</b><span>CGPA</span></div>
-        <div class="stat"><b>RHCSA</b><span>Certified</span></div>
-        <div class="stat"><b>1</b><span>Internship</span></div>
-      </div>
-    </div>
-  </div>
+<div class="orb-wrap">
+<div class="orb" id="orb"></div>
+</div>
+
 </section>
 
-<!-- ===== SKILLS ===== -->
-<section id="skills" class="block">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">// Expertise</span>
-      <h2>Skills &amp; Tools</h2>
-      <p>What I work with day to day.</p>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <span class="level">Hands-on</span>
-        <h3>Linux Administration</h3>
-        <div class="tag-row">
-          <span class="tag">SSH</span><span class="tag">SELinux</span><span class="tag">LVM</span>
-          <span class="tag">CRONTAB</span><span class="tag">RPM/YUM</span><span class="tag">Bash</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <span class="level">Console-level</span>
-        <h3>AWS Cloud</h3>
-        <div class="tag-row">
-          <span class="tag">EC2</span><span class="tag">S3</span><span class="tag">IAM</span>
-          <span class="tag">AMI</span><span class="tag">RDS/Aurora</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <span class="level">Working knowledge</span>
-        <h3>Virtualization &amp; Tools</h3>
-        <div class="tag-row">
-          <span class="tag">VMware</span><span class="tag">Git</span><span class="tag">GitHub</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <span class="level">Basic exposure</span>
-        <h3>Programming</h3>
-        <div class="tag-row">
-          <span class="tag">Python</span><span class="tag">Java</span><span class="tag">HTML/CSS</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <span class="level">Coursework</span>
-        <h3>DevOps Fundamentals</h3>
-        <div class="tag-row">
-          <span class="tag">Git</span><span class="tag">Maven</span><span class="tag">Jenkins</span><span class="tag">Ansible</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <span class="level">Applied</span>
-        <h3>Scripting &amp; Automation</h3>
-        <div class="tag-row">
-          <span class="tag">Bash</span><span class="tag">Cron jobs</span><span class="tag">Log handling</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<section id="about">
+<h2>About Me</h2>
+
+<div class="cards">
+<div class="card">
+<h3>Who I Am</h3>
+<p>I'm an IT student interested in Cloud Computing, DevOps and modern web experiences.</p>
+</div>
+
+<div class="card">
+<h3>Goal</h3>
+<p>Looking for opportunities to build impactful cloud and software projects.</p>
+</div>
+</div>
+
 </section>
 
-<!-- ===== PROJECTS ===== -->
-<section id="projects" class="block">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">// Portfolio work</span>
-      <h2>Featured Projects</h2>
-      <p>Work that reflects my infrastructure focus and applied software skills.</p>
-    </div>
-    <div class="project-grid">
-      <div class="project-card">
-        <span class="p-tag">// PROJECT 01 · Machine Learning</span>
-        <h3>AI-Powered ATS Resume Analyzer</h3>
-        <p>A Flask web app that scores resumes against job descriptions using TF-IDF and cosine similarity, with a career recommendation engine covering 12 tech roles.</p>
-        <div class="tag-row"><span class="tag">Flask</span><span class="tag">scikit-learn</span><span class="tag">pdfplumber</span></div>
-        <a href="https://github.com/ezhil1534-svg" target="_blank" class="link">View code →</a>
-      </div>
-      <div class="project-card">
-        <span class="p-tag">// PROJECT 02 · Linux</span>
-        <h3>Linux Server Hardening Scripts</h3>
-        <p>Bash scripts automating SELinux policy checks, user permission audits, and log rotation on RHEL-based systems.</p>
-        <div class="tag-row"><span class="tag">Bash</span><span class="tag">SELinux</span><span class="tag">RHEL</span></div>
-        <a href="https://github.com/ezhil1534-svg" target="_blank" class="link">View code →</a>
-      </div>
-      <div class="project-card">
-        <span class="p-tag">// PROJECT 03 · Desktop App</span>
-        <h3>Library Management System</h3>
-        <p>A desktop application for managing book inventory, member records, and issue/return tracking with a MySQL backend.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">MySQL</span></div>
-        <a href="https://github.com/ezhil1534-svg" target="_blank" class="link">View code →</a>
-      </div>
-    </div>
-  </div>
+<section id="skills">
+
+<h2>Skills</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Programming</h3>
+<p>Java • Python • HTML • CSS • JavaScript</p>
+</div>
+
+<div class="card">
+<h3>Cloud</h3>
+<p>AWS • Linux • Git • GitHub</p>
+</div>
+
+<div class="card">
+<h3>Soft Skills</h3>
+<p>Communication • Adaptability • Teamwork • Time Management</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- ===== CERTIFICATIONS ===== -->
-<section id="certifications" class="block">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">// Credentials</span>
-      <h2>Certifications</h2>
-    </div>
-    <div class="cert-list">
-      <div class="cert-row">
-        <div><div class="cname">Red Hat Certified System Administrator (RHCSA)</div><div class="cissuer">Red Hat</div></div>
-        <div class="cyear">Certified</div>
-      </div>
-      <div class="cert-row">
-        <div><div class="cname">Linux Administrator Internship</div><div class="cissuer">Vsphere Technologies Pvt. Ltd., Bangalore</div></div>
-        <div class="cyear">Completed</div>
-      </div>
-      <div class="cert-row">
-        <div><div class="cname">Rajya Puraskar Award</div><div class="cissuer">Bharat Scouts and Guides</div></div>
-        <div class="cyear">Awarded</div>
-      </div>
-    </div>
-  </div>
+<section id="projects">
+
+<h2>Projects</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>3D Portfolio</h3>
+<p>Interactive mouse-based 3D portfolio with glassmorphism UI.</p>
+</div>
+
+<div class="card">
+<h3>Upcoming Project</h3>
+<p>Your next cloud project will appear here.</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="block">
-  <div class="wrap" style="max-width:640px;">
-    <span class="eyebrow">// Get in touch</span>
-    <h2 style="font-size:32px; font-weight:700;">Let's work together</h2>
-    <p style="color:var(--muted); margin-top:14px; font-size:15px;">Open to Linux administration, cloud, and DevOps roles — reach out any time.</p>
-    <div class="contact-links">
-      <a href="mailto:ezhil1534@gmail.com">✉ ezhil1534@gmail.com</a>
-      <a href="https://linkedin.com/in/ezhilarasi-m-7a2335307" target="_blank">in/ linkedin.com/in/ezhilarasi-m</a>
-      <a href="https://github.com/ezhil1534-svg" target="_blank">⌘ github.com/ezhil1534-svg</a>
-    </div>
-  </div>
+<section id="contact">
+
+<h2>Contact</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Let's Connect</h3>
+<p>Email : yourmail@gmail.com</p>
+<p>GitHub : github.com/yourusername</p>
+<p>LinkedIn : linkedin.com/in/yourusername</p>
+</div>
+
+</div>
+
 </section>
 
-<footer>© 2026 Ezhilarasi M. Built with care.</footer>
+<footer>© 2026 Ezhil. All Rights Reserved.</footer>
 
 <script>
-  // ---- Scroll-scrubbed hero: swap frames based on scroll position ----
-  const pinSection = document.getElementById('scrollytelling');
-  const frames = document.querySelectorAll('.frame');
-  const dots = document.querySelectorAll('.progress-rail .dot');
-  const totalFrames = frames.length;
+const orb=document.getElementById("orb");
+const hero=document.getElementById("heroText");
+const glow=document.getElementById("glow");
+const cards=document.querySelectorAll(".card");
 
-  function updateHero(){
-    const rect = pinSection.getBoundingClientRect();
-    const sectionHeight = pinSection.offsetHeight - window.innerHeight;
-    // how far we've scrolled through the pinned section, 0 to 1
-    let progress = -rect.top / sectionHeight;
-    progress = Math.min(Math.max(progress, 0), 0.999);
+document.addEventListener("mousemove",e=>{
 
-    const activeIndex = Math.floor(progress * totalFrames);
+const x=(e.clientX/window.innerWidth-.5)*30;
+const y=(e.clientY/window.innerHeight-.5)*30;
 
-    frames.forEach((f, i) => f.classList.toggle('active', i === activeIndex));
-    dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
-  }
+orb.style.transform=`rotateY(${x}deg) rotateX(${-y}deg) translateZ(40px)`;
+hero.style.transform=`rotateY(${x/3}deg) rotateX(${-y/3}deg) translateZ(35px)`;
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
 
-  window.addEventListener('scroll', updateHero);
-  window.addEventListener('resize', updateHero);
-  updateHero();
+cards.forEach(card=>{
+const rect=card.getBoundingClientRect();
+const cx=rect.left+rect.width/2;
+const cy=rect.top+rect.height/2;
+const dx=(e.clientX-cx)/20;
+const dy=(e.clientY-cy)/20;
+card.style.transform=`rotateY(${dx}deg) rotateX(${-dy}deg) translateZ(20px)`;
+});
 
-  // ---- Fade-in the regular sections as they enter view ----
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        e.target.style.opacity = 1;
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('section.block').forEach(sec => {
-    sec.style.opacity = 0;
-    sec.style.transform = 'translateY(24px)';
-    sec.style.transition = 'opacity .6s ease, transform .6s ease';
-    observer.observe(sec);
-  });
+});
 </script>
 
 </body>
