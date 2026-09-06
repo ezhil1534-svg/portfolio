@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ezhil | IT Student Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h2 {
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero h3 {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .about,
+        .skills,
+        .projects,
+        .experience {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .about p {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: #555;
+        }
+
+        .skill-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            font-weight: bold;
+        }
+
+        .project-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .experience-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .contact {
+            text-align: center;
+            background: white;
+        }
+
+        .contact a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            section {
+                padding: 60px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>Ezhil</h2>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Internship</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h1>Hi, I'm <span>Ezhil</span></h1>
+
+    <h3>B.Tech IT Student | Cloud & DevOps Enthusiast</h3>
+
+    <p>
+        I am a B.Tech Information Technology student interested in
+        Cloud Computing, Linux Administration, DevOps and Software Development.
+        I enjoy learning new technologies and building practical projects.
+    </p>
+
+    <div>
+        <a href="#projects" class="btn">View Projects</a>
+
+        <!-- Replace this with your actual resume PDF link -->
+        <a href="https://github.com/ezhil1534-svg/Ezhil-Resume"
+           class="btn">View Resume</a>
+    </div>
+</section>
+
+<section id="about">
+    <div class="about">
+        <h2 class="section-title">About Me</h2>
+
+        <p>
+            I am currently pursuing B.Tech in Information Technology.
+            I have hands-on experience in Linux system administration
+            and exposure to AWS cloud services through my internship.
+            I am passionate about Cloud Engineering, IT Infrastructure,
+            DevOps and software development.
+        </p>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="skills">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skill-container">
+            <div class="skill">Linux / CentOS</div>
+            <div class="skill">AWS</div>
+            <div class="skill">Python</div>
+            <div class="skill">Java</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">Git</div>
+            <div class="skill">GitHub</div>
+            <div class="skill">VMware</div>
+            <div class="skill">MySQL</div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="project-card">
+            <h3>Library Management System</h3>
+
+            <p>
+                A Library Management System developed using Python,
+                Tkinter and MySQL to manage books, users,
+                issue and return operations and library reports.
+            </p>
+
+            <p>
+                <strong>Technologies:</strong>
+                Python, Tkinter, MySQL, MySQL Connector, Pillow
+            </p>
+
+            <a href="https://github.com/ezhil1534-svg/Library-Management-System"
+               class="btn" target="_blank">
+                View on GitHub
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="experience">
+        <h2 class="section-title">Internship</h2>
+
+        <div class="experience-card">
+            <h3>Linux Administrator Intern</h3>
+
+            <p><strong>Vsphere Technologies Pvt. Ltd.</strong></p>
+
+            <p>
+                During my internship, I gained hands-on exposure to
+                Linux administration and AWS cloud services.
+                I worked with Linux system administration,
+                SSH, SELinux, CRONTAB and AWS services including
+                EC2, S3, IAM, RDS and Aurora.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <p>
+        Email:
+        <a href="mailto:ezhil1534@gmail.com">
+            ezhil1534@gmail.com
+        </a>
+    </p>
+
+    <br>
+
+    <!-- Replace these links with your actual profile links -->
+    <a href="https://github.com/ezhil1534-svg" target="_blank">GitHub</a>
+
+    <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+
+    <a href="https://leetcode.com/" target="_blank">LeetCode</a>
+</section>
+
+<footer>
+    <p>© 2026 Ezhil. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
